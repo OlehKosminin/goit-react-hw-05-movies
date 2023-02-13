@@ -1,5 +1,5 @@
 import { useState, useEffect } from 'react';
-import { useParams } from 'react-router-dom';
+import { Link, useNavigate, useParams } from 'react-router-dom';
 import FetchPostById from 'shared/services/FetchPostById';
 import {
   Button,
@@ -9,12 +9,14 @@ import {
   Info,
   Wraper,
   List,
-  Item,
+  // Item,
 } from './SInglePostPage.styled';
 
 const SinglePostPage = () => {
   const [post, setPost] = useState();
   const { id } = useParams();
+
+  const navigate = useNavigate();
 
   useEffect(() => {
     const fetchPost = async () => {
@@ -29,9 +31,18 @@ const SinglePostPage = () => {
     fetchPost();
   }, [id]);
   // const { poster_path } = post;
+
+  // const goBeck = useCallback(() => navigate(-1), [navigate]);
   return (
     <>
-      <Button type="button">Go back</Button>
+      <Button
+        type="button"
+        onClick={() => {
+          navigate(-1);
+        }}
+      >
+        Go back
+      </Button>
       {post && (
         <>
           <Wraper>
@@ -51,10 +62,10 @@ const SinglePostPage = () => {
           </Wraper>
           <div>
             <Info>Additonal information</Info>
-            <List>
-              <Item></Item>
-              <Item></Item>
-            </List>
+            {/* <List> */}
+            {/* <Link to="/Cast"></Link> */}
+            {/* <Link to="/Reviews"></Link> */}
+            {/* </List> */}
           </div>
         </>
       )}

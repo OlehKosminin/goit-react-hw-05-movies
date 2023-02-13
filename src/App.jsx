@@ -1,9 +1,9 @@
-import { BrowserRouter, Route, Routes } from 'react-router-dom';
+import { Route, Routes, BrowserRouter } from 'react-router-dom';
 
 import Navbar from 'modules/Navbar';
 import HomePage from 'pages/HomePage';
 import Movie from 'pages/MoviePage';
-import SInglePostPage from 'pages/SInglePostPage';
+import SInglePostPage from 'pages/SInglePostPage/SInglePostPage';
 import NotFoundPage from 'pages/NotFoundPage';
 
 export const App = () => {
