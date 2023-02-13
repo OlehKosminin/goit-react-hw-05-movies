@@ -11,6 +11,9 @@ const PopularMovie = () => {
     if (!items) {
       return;
     }
+    if (items.length > 20) {
+      return;
+    }
     const fetchPosts = async () => {
       try {
         // setLoading(true);
@@ -25,7 +28,7 @@ const PopularMovie = () => {
       }
     };
     fetchPosts();
-  }, []);
+  }, [items]);
 
   return <PostMovieList items={items} />;
 };
