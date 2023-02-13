@@ -1,0 +1,22 @@
+.list {
+  list-style: none;
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 15px;
+}
+
+.item {
+  border: 1px solid;
+  border-radius: 5px;
+  padding: 0 10px;
+  cursor: pointer;
+
+  &:hover {
+    background-color: rgb(240, 118, 118);
+  }
+}
+
+.link {
+  text-decoration: none;
+  color: #000;
+}
