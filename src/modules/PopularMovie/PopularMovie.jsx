@@ -4,21 +4,24 @@ import PostMovieList from './PopularMovieList/PostMovieList';
 
 const PopularMovie = () => {
   const [items, setItems] = useState([]);
-  const [loading, setLoading] = useState(false);
-  const [error, setError] = useState(null);
+  // const [loading, setLoading] = useState(false);
+  // const [error, setError] = useState(null);
 
   useEffect(() => {
+    if (!items) {
+      return;
+    }
     const fetchPosts = async () => {
       try {
-        setLoading(true);
+        // setLoading(true);
         const data = await FetchPopular();
         // console.log('data: ', data);
 
         setItems(prevItems => [...prevItems, ...data]);
       } catch (error) {
-        setError(error.message);
+        // setError(error.message);
       } finally {
-        setLoading(false);
+        // setLoading(false);
       }
     };
     fetchPosts();
