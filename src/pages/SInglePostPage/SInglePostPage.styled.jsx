@@ -36,6 +36,9 @@ export const Img = styled.img`
 
 // additional info
 
-export const List = styled.ul``;
+export const List = styled.ul`
+  display: flex;
+  flex-direction: column;
+`;
 
 export const Item = styled.li``;

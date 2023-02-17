@@ -1,5 +1,5 @@
 import { useState, useEffect } from 'react';
-import { Link, useNavigate, useParams } from 'react-router-dom';
+import { Link, useNavigate, useParams, Outlet } from 'react-router-dom';
 import FetchPostById from 'shared/services/FetchPostById';
 import {
   Button,
@@ -22,7 +22,7 @@ const SinglePostPage = () => {
     const fetchPost = async () => {
       try {
         const result = await FetchPostById(id);
-        console.log('result: ', result);
+        // console.log('result: ', result);
         setPost(result);
       } catch ({ response }) {
         console.log(response.data.message);
@@ -62,10 +62,11 @@ const SinglePostPage = () => {
           </Wraper>
           <div>
             <Info>Additonal information</Info>
-            {/* <List> */}
-            {/* <Link to="/Cast"></Link> */}
-            {/* <Link to="/Reviews"></Link> */}
-            {/* </List> */}
+            <List>
+              <Link to="cast">Cast</Link>
+              <Link to="rewievs">Rewievs</Link>
+              <Outlet />
+            </List>
           </div>
         </>
       )}
