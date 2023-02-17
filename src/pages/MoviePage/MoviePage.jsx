@@ -4,6 +4,7 @@ import { useSearchParams } from 'react-router-dom';
 import SearchMovieForm from 'modules/SearchMovieForm';
 import SearchMovieList from 'modules/SearchMovieList';
 import FetchByName from 'shared/services/FetchByName';
+// import SinglePostCastPage from '../SinglePostCastPage';
 
 const Movie = () => {
   // const [search, setSearch] = useState('');
