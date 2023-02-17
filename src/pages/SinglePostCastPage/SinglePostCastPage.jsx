@@ -1,6 +1,6 @@
 import FetchCast from 'shared/services/FetchCast';
 import { useState, useEffect } from 'react';
-import { useLocation, useParams } from 'react-router-dom';
+import { useParams } from 'react-router-dom';
 
 const SinglePostCastPage = () => {
   const [post, setPost] = useState([]);
