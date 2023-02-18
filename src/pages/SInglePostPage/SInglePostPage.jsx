@@ -16,6 +16,7 @@ import {
   Wraper,
   List,
 } from './SInglePostPage.styled';
+import FetchImg from 'shared/services/FetchImg';
 
 const SinglePostPage = () => {
   const [post, setPost] = useState();
@@ -23,8 +24,6 @@ const SinglePostPage = () => {
   const navigate = useNavigate();
   const location = useLocation();
   const { from } = location.state;
-  // console.log('location: ', location);
-  // const backLinkHref = location.state?.from ?? '/movie';
 
   useEffect(() => {
     const fetchPost = async () => {
@@ -42,6 +41,8 @@ const SinglePostPage = () => {
     navigate(from);
   }, [from, navigate]);
 
+  // const getImg = () => {};
+
   return (
     <>
       <Button type="button" onClick={goBack}>
@@ -50,7 +51,14 @@ const SinglePostPage = () => {
       {post && (
         <>
           <Wraper>
-            <Img src={post.poster_path} alt={post.Title}></Img>
+            <Img
+              src={
+                post.poster_path
+                  ? `https://image.tmdb.org/t/p/w200/${post.poster_path}`
+                  : 'https://via.placeholder.com/200'
+              }
+              alt={post.Title}
+            ></Img>
             <div>
               <Title>{post.original_title}</Title>
               <Info>popularity:{post.popularity}</Info>
