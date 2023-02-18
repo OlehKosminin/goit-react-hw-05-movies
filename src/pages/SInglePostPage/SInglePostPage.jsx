@@ -16,7 +16,6 @@ import {
   Wraper,
   List,
 } from './SInglePostPage.styled';
-import FetchImg from 'shared/services/FetchImg';
 
 const SinglePostPage = () => {
   const [post, setPost] = useState();
@@ -40,8 +39,6 @@ const SinglePostPage = () => {
   const goBack = useCallback(() => {
     navigate(from);
   }, [from, navigate]);
-
-  // const getImg = () => {};
 
   return (
     <>
