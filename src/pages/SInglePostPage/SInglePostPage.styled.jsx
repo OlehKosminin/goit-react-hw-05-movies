@@ -34,8 +34,6 @@ export const Img = styled.img`
   min-height: 100px;
 `;
 
-// additional info
-
 export const List = styled.ul`
   display: flex;
   flex-direction: column;

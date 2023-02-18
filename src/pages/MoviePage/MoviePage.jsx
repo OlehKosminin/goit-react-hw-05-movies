@@ -2,9 +2,9 @@ import { useEffect, useState, useCallback } from 'react';
 import { useSearchParams } from 'react-router-dom';
 
 import SearchMovieForm from 'modules/SearchMovieForm';
-import SearchMovieList from 'modules/SearchMovieList';
+
 import FetchByName from 'shared/services/FetchByName';
-// import SinglePostCastPage from '../SinglePostCastPage';
+import FilmList from 'modules/FilmList';
 
 const Movie = () => {
   // const [search, setSearch] = useState('');
@@ -28,7 +28,7 @@ const Movie = () => {
       try {
         // setLoading(true);
         const data = await FetchByName(search, page);
-        console.log('data: ', data);
+        // console.log('data: ', data);
 
         setItems(prevItems => [...prevItems, ...data]);
       } catch (error) {
@@ -42,7 +42,6 @@ const Movie = () => {
 
   const onSearchPosts = useCallback(
     ({ search }) => {
-      // setSearch(search);
       setSearchParams({ search });
       setItems([]);
       setPage(1);
@@ -53,7 +52,7 @@ const Movie = () => {
   return (
     <>
       <SearchMovieForm onSubmit={onSearchPosts} />
-      {items && <SearchMovieList items={items}></SearchMovieList>}
+      {items && <FilmList items={items}></FilmList>}
     </>
   );
 };
