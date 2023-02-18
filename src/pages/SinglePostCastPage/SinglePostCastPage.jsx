@@ -4,7 +4,6 @@ import { useParams, Link } from 'react-router-dom';
 
 function SinglePostCastPage() {
   const [post, setPost] = useState([]);
-  console.log('post: ', post);
   const { id } = useParams();
 
   useEffect(() => {
