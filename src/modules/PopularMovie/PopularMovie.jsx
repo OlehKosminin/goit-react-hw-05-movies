@@ -1,5 +1,4 @@
 import { useState, useEffect } from 'react';
-import { useLocation, Link } from 'react-router-dom';
 import FetchPopular from 'shared/services/FetchPopular';
 import FilmList from 'modules/FilmList';
 
@@ -7,7 +6,6 @@ const PopularMovie = () => {
   const [items, setItems] = useState([]);
   // const [loading, setLoading] = useState(false);
   // const [error, setError] = useState(null);
-  const location = useLocation();
 
   useEffect(() => {
     if (!items) {
