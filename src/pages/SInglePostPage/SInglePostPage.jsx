@@ -1,5 +1,11 @@
-import { useState, useEffect } from 'react';
-import { Link, useNavigate, useParams, Outlet } from 'react-router-dom';
+import { useState, useEffect, useCallback } from 'react';
+import {
+  Link,
+  useNavigate,
+  useParams,
+  Outlet,
+  useLocation,
+} from 'react-router-dom';
 import FetchPostById from 'shared/services/FetchPostById';
 import {
   Button,
@@ -9,20 +15,21 @@ import {
   Info,
   Wraper,
   List,
-  // Item,
 } from './SInglePostPage.styled';
 
 const SinglePostPage = () => {
   const [post, setPost] = useState();
   const { id } = useParams();
-
   const navigate = useNavigate();
+  const location = useLocation();
+  const { from } = location.state;
+  // console.log('location: ', location);
+  // const backLinkHref = location.state?.from ?? '/movie';
 
   useEffect(() => {
     const fetchPost = async () => {
       try {
         const result = await FetchPostById(id);
-        // console.log('result: ', result);
         setPost(result);
       } catch ({ response }) {
         console.log(response.data.message);
@@ -30,17 +37,14 @@ const SinglePostPage = () => {
     };
     fetchPost();
   }, [id]);
-  // const { poster_path } = post;
 
-  // const goBeck = useCallback(() => navigate(-1), [navigate]);
+  const goBack = useCallback(() => {
+    navigate(from);
+  }, [from, navigate]);
+
   return (
     <>
-      <Button
-        type="button"
-        onClick={() => {
-          navigate(-1);
-        }}
-      >
+      <Button type="button" onClick={goBack}>
         Go back
       </Button>
       {post && (
@@ -63,8 +67,12 @@ const SinglePostPage = () => {
           <div>
             <Info>Additonal information</Info>
             <List>
-              <Link to="cast">Cast</Link>
-              <Link to="rewievs">Rewievs</Link>
+              <Link to="cast" state={{ from }}>
+                Cast
+              </Link>
+              <Link to="rewievs" state={{ from }}>
+                Rewievs
+              </Link>
               <Outlet />
             </List>
           </div>

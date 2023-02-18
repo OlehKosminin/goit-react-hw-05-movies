@@ -9,7 +9,7 @@ const SinglePostReviewsPage = () => {
     const fetchPost = async () => {
       try {
         const result = await FetchReviews(id);
-        console.log('result', result);
+        // console.log('result', result);
         setPost(result);
       } catch ({ response }) {
         console.log(response.data.messega);
